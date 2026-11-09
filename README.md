@@ -1,5 +1,23 @@
 # Incident response: "Locked Friday morning"
 
+> ⚠️ **Educational material — this is a graded university lab (TP), not a real system.**
+> This repository is a teaching practical for the **4IRC Linux Security** course at
+> **CPE Lyon**. It exists so students can practise **defensive** incident response
+> and forensics on a host that was *deliberately prepared* for the exercise.
+>
+> - The scenario, the "ticket", and the "attacker" below are **fictional**.
+> - The lab image referenced here contains **intentionally planted, inert
+>   artefacts** used only as detection targets. There is **no working malware, no
+>   exploit, and no code that performs any network attack**: the "beacon" only
+>   writes a log line, the address in the logs is a reserved documentation range
+>   (RFC 5737) that routes nowhere, and the stray listener merely holds a port open.
+> - **Do not deploy, run in production, or use this image for any real purpose.**
+>   Nothing here is attacker tooling, and it is not useful as such.
+>
+> If an automated scanner flags this repo, this is why — see [SECURITY.md](SECURITY.md).
+
+---
+
 > **Ticket SOC-4471 — priority high**
 > Friday, 08:40. The network team reports that **host** — a Linux server your
 > team hardened last month during the Linux Security labs — made repeated
