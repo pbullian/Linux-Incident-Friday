@@ -1,0 +1,17 @@
+# Incident lab runtime. The image is pulled by exact digest so everyone analyses
+# the same host. The instructor sets INCIDENT_IMAGE to the digest-pinned
+# reference for your group (e.g. ghcr.io/pbullian/cpe-incident-friday@sha256:...).
+services:
+  host:
+    image: ${INCIDENT_IMAGE:-cpe-incident-friday:seed-demo}
+    hostname: host
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+    security_opt:
+      - apparmor=unconfined
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,nodev,mode=1777
+    volumes:
+      - ./evidence:/evidence
+    # No published ports: analyse from inside with `docker compose exec host bash`.
